@@ -1,0 +1,24 @@
+- `$_SERVER['PHP_SELF']`: Devuelve el nombre de archivo del script que se está ejecutando     actualmente.
+- `$_SERVER['GATEWAY_INTERFACE']`: Devuelve la versión de la Interfaz Común de Gateway (CGI) que está utilizando el servidor.
+- `$_SERVER['SERVER_ADDR']`: Devuelve la dirección IP del servidor host.
+- `$_SERVER['SERVER_NAME']`: Devuelve el nombre del servidor host (como www.ejemplo.com).
+- `$_SERVER['SERVER_SOFTWARE']`: Devuelve la cadena de identificación del servidor (como Apache/2.2.24).
+- `$_SERVER['SERVER_PROTOCOL']`: Devuelve el nombre y la revisión del protocolo de información (como HTTP/1.1).
+- `$_SERVER['REQUEST_METHOD']`: Devuelve el método de solicitud utilizado para acceder a la página (como POST).
+- `$_SERVER['REQUEST_TIME']`: Devuelve la marca de tiempo del inicio de la solicitud (como 1377687496).
+- `$_SERVER['QUERY_STRING']`: Devuelve la cadena de consulta si la página se accede mediante una cadena de consulta.
+- `$_SERVER['HTTP_ACCEPT']`: Devuelve el encabezado Accept de la solicitud actual.
+- `$_SERVER['HTTP_ACCEPT_CHARSET']`: Devuelve el encabezado Accept_Charset de la solicitud actual (como utf-8, ISO-8859-1).
+- `$_SERVER['HTTP_HOST']`: Devuelve el encabezado Host de la solicitud actual.
+- `$_SERVER['HTTP_REFERER']`: Devuelve la URL completa de la página actual (no es confiable porque no todos los agentes de usuario lo admiten).
+- `$_SERVER['HTTPS']`: Indica si el script se consulta a través de un protocolo HTTP seguro.
+- `$_SERVER['REMOTE_ADDR']`: Devuelve la dirección IP desde donde el usuario está viendo la página actual.
+- `$_SERVER['REMOTE_HOST']`: Devuelve el nombre del host desde donde el usuario está viendo la página actual.
+- `$_SERVER['REMOTE_PORT']`: Devuelve el puerto que está utilizando la máquina del usuario para comunicarse con el servidor web.
+- `$_SERVER['SCRIPT_FILENAME']`: Devuelve la ruta absoluta del script que se está ejecutando actualmente.
+- `$_SERVER['SERVER_ADMIN']`: Devuelve el valor dado a la directiva SERVER_ADMIN en el archivo de configuración del servidor web (si su script se ejecuta en un host virtual, será el valor definido para ese host virtual) (como alguien@ejemplo.com).
+- `$_SERVER['SERVER_PORT']`: Devuelve el puerto en la máquina del servidor que está utilizando el servidor web para la comunicación (como 80).
+- `$_SERVER['SERVER_SIGNATURE']`: Devuelve la versión del servidor y el nombre del host virtual que se agregan a las páginas generadas por el servidor.
+- `$_SERVER['PATH_TRANSLATED']`: Devuelve la ruta basada en el sistema de archivos al script actual.
+- `$_SERVER['SCRIPT_NAME']`: Devuelve la ruta del script actual.
+- `$_SERVER['SCRIPT_URI']`: Devuelve el URI de la página actual.
