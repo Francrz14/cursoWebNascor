@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajax Map</title>
+</head>
+<body>
+  
+  <!-- Llamar desde el cliente con ajax al servidor -->
+  <!-- Ruta completa a select.php -->
+  <!-- http://localhost/php-curso/MySQL/ejem-Primera-conexion/api/select.php -->
+  <div id="ver_resultado"></div>
+  <script>
+
+    let urlBase = 'http://localhost/php-curso/MySQL/';
+    function dameDatos(item) {
+        return ['<img src="' + urlBase + "ejem-Primera-conexion/" + item.imagen + 
+        '" height="150">' + "<br>" + item.id + " | " +  item.titulo + " | " + item.texto + " | " + 
+        item.fecha + " | " + item.categoria + "<hr>"];
+    }
+    
+    function bucle(datos){
+      //document.write(datos);
+      let = elDiv = document.getElementById("ver_resultado");
+      let html = datos.map(dameDatos).join('');
+      
+      //console.log(datos);
+      //for (let i = 0; i < datos.length; i++) {
+        // Imprementado en plantillas de cadena 
+        // html += `<img src="${urlBase}ejem-Primera-conexion/${datos[i].imagen}" height="150"><br>`;
+        //html += '<img src="'+ urlBase + "ejem-Primera-conexion/" + datos[i].imagen + '" height="150">' + '<br>';
+        //html += datos[i].id + ',' + '<br>';
+        //html += datos[i].titulo + ',' + '<br>';
+        //html += datos[i].texto + ',' + '<br>';
+        //html += datos[i].categoria + ',' + '<br>';
+        //html += datos[i].fecha + ',' + '<hr>';
+        
+        // si lo sacas fuera es para el ejemplo de arriba
+        elDiv.innerHTML = html;
+      } 
+    
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function (json) {
+  
+      if (this.readyState == 4 && this.status == 200) {
+        // comenta esta línea para que desaparezca el objeto del servidor
+        //document.getElementById("ver_resultado").innerHTML = this.responseText;
+        // Convertimos los datos del objeto JSON en un objeto Javascript
+        let datos = JSON.parse(this.responseText);
+        bucle(datos);
+      } 
+    }
+
+    xmlhttp.open("GET", urlBase + "ejem-Primera-conexion/api/select.php", true);
+    xmlhttp.send();
+
+  </script>
+</body>
+</html>

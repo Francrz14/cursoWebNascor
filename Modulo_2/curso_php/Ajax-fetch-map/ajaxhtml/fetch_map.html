@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Map</title>
+    <!-- Importamos la libreria Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <p id="ver_resultado"></p>
+    <script>
+        const verResultado = document.getElementById("ver_resultado");
+        html = '';
+        const urlBase = 'http://localhost/php-curso/MySQL/';
+        const endPoint = "ejem-Primera-conexion/api/select.php";
+        const urlImages = "http://localhost/php-curso/MySQL/ejem-Primera-conexion/";
+        
+        async function positivo(response) {
+            let text = await response.json();
+            console.log(text);
+            if (response.ok) {
+                // Usamos .join('') para quitar los caracteres sobrantes como , o .
+                verResultado.innerHTML = text.map(dameDatos).join('');
+            } else {
+                showError('status code: ' + response.status);
+            }
+        }
+ 
+        function imagen(img) {
+            if (img.startsWith('http')) {
+                // Es una URL externa, devolver tal cual
+                return img;  
+            } else {
+                // Concatenar la URL base local con el nombre de la imagen
+
+                return urlImages + img;  
+            }
+        }
+
+        
+        
+        function dameDatos(item) {
+            html = '<img src="'+ imagen(item.imagen) + '" height="150">'+ "<br>" +
+            item.id + " | " + item.titulo + " | " + item.texto + " | " + item.fecha + " | " + item.categoria + "<hr>";
+            return html;
+        }
+        
+        
+
+        function errDatos(error){
+            console.log(error);
+        }
+
+        fetch(urlBase + endPoint).
+           then(positivo).
+           catch(errDatos)
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery Ajax</title>
+    <!-- Importamos la libreria Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <!-- Llamar desde el cliente con ajax al servidor -->
+    <!-- Ruta completa a select.php -->
+    <!-- http://localhost/php-curso/MySQL/ejem-Primera-conexion/api/select.php -->
+    <div id="ver_resultado"></div>
+    <script>
+
+        let urlBase = 'http://localhost/php-curso/MySQL/';
+        let elDiv = document.getElementById("ver_resultado");
+        let html = '';
+
+        $.get(urlBase + "ejem-Primera-conexion/api/select.php", function (datos) {
+            $.each(datos, function () {
+                let imagen = this.imagen.replace('http')
+                if (imagen != this.imagen) {
+                    imagen = this.imagen
+                } else {
+                    imagen = urlBase + "ejem-Primera-conexion/" + this.imagen;
+                }
+
+                html += '<img src="' + imagen + '" height="150">' + '<br>';
+                html += this.id + ',' + '<br>';
+                html += this.titulo + ',' + '<br>';
+                html += this.texto + ',' + '<br>';
+                html += this.categoria + ',' + '<br>';
+                html += this.fecha + ',' + '<hr>';
+            })
+            $('#ver_resultado').html(html)
+        })
+    </script>
+</body>
+</html>

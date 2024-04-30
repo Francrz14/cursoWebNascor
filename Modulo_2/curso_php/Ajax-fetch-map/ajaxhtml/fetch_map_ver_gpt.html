@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Map</title>
+    <!-- Importamos la libreria Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <p id="ver_resultado"></p>
+    <script>
+        const urlBase = 'http://localhost/php-curso/MySQL/';
+        const endPoint = "ejem-Primera-conexion/api/select.php";
+        const urlImages = "http://localhost/php-curso/MySQL/ejem-Primera-conexion/";
+
+        function getImageUrl(img) {
+            if (img.startsWith('http')) {
+                return img;  // URL externa
+            } else {
+                return urlImages + img;  // URL local
+            }
+        }
+
+        async function fetchData() {
+            try {
+                const response = await fetch(urlBase + endPoint);
+                if (!response.ok) {
+                    throw new Error('Error en la solicitud: ' + response.status);
+                }
+                const data = await response.json();
+                displayData(data);
+            } catch (error) {
+                console.error('Error al obtener datos:', error);
+            }
+        }
+
+        function displayData(data) {
+            const verResultado = document.getElementById("ver_resultado");
+            let html = '';
+            data.forEach(item => {
+                const imageUrl = getImageUrl(item.imagen);
+                html += '<img src="' + imageUrl + '" height="150">' + "<br>" +
+                    item.id + " | " + item.titulo + " | " + item.texto + " | " +
+                    item.fecha + " | " + item.categoria + "<hr>";
+            });
+            verResultado.innerHTML = html;
+        }
+
+        // Llamar a fetchData cuando la página se cargue
+        document.addEventListener("DOMContentLoaded", () => {
+            fetchData();
+        });
+
+
+    </script>
+</body>
+
+</html>

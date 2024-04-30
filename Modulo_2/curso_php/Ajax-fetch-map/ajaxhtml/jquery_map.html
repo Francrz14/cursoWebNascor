@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery Map</title>
+    <!-- Importamos la libreria Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<p id="ver_resultado"></p>
+<body>
+    <script>
+    let urlBase = 'http://localhost/php-curso/MySQL/';
+    let urlImages = "http://localhost/php-curso/MySQL/ejem-Primera-conexion/";
+    let html = '';
+
+    function imagen(img) {
+    if (img.startsWith('http')) {
+        // Es una URL externa, devolver tal cual
+        return img;  
+    } else {
+        // Concatenar la URL base local con el nombre de la imagen
+        return urlImages + img;  
+    }
+}
+    function dameDatos(item) {
+        let imgUrl = imagen(item.imagen);
+    
+        let html = '<img src="' + imgUrl + '" height="150">' + "<br>" +
+        item.id + " | " + item.titulo + " | " + item.texto + " | " + item.fecha + " | " + item.categoria + "<hr>";
+        return html;
+    }
+
+    $.get(urlBase + "ejem-Primera-conexion/api/select.php", function(datos) {
+        $('#ver_resultado').html(datos.map(dameDatos).join(''));
+    });
+    </script>
+</body>
+</html>
