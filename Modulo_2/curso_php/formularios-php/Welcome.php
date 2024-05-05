@@ -30,7 +30,7 @@
         <h3>Tu dirección de correo es: <?php echo $_POST["email"]; ?></h3>
     <?php
     } else {
-        echo "ERROR, Faltan parámetros";
+        echo "ERROR, Faltan parámetros, por favor introduce un email válido";
         http_response_code(404);
         exit;
     }
