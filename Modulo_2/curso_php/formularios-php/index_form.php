@@ -69,9 +69,12 @@
     Welcome.php por el metodo POST -->
     <h2>Mi primer formulario en PHP</h2>
     <form action="Welcome.php" method="post" id="form_php">
-        Nombre: <input type="text" name="nombre" id=""><br>
-        Edad: <input type="number" name="edad" id=""><br>
-        E-mail: <input type="email" name="email" id=""><br><br>
+        <label for="nombre">Nombre: </label>
+        <input type="text" name="nombre" id="nombre"><br>
+        <label for="edad">Edad: </label>
+        <input type="number" name="edad" id="edad"><br>
+        <label for="email">E-mail: </label>
+        <input type="email" name="email" id="email"><br><br>
         <!-- Creamos un boton submit para eniar el formulario, y otro para resetearlo -->
         <input type="submit" value="Enviar">
         <input type="reset" value="Reset">
