@@ -14,14 +14,16 @@
         // Create an object:
         const car = [
             { type: "Fiat", model: "500", color: "white" },
-            { type: "Honda", model: "CR-Z", color: "blue" }
+            { type: "Honda", model: "CR-Z", color: "blue" },
+            { type: "Ferrari", model: "Enzo", color: "Red" }
         ];
 
         // Display some data from the object:
         let html = "";
         for (i = 0; i < car.length; i++) {
             let b = i + 1;
-            html += "<br>The car " + b + " type is " + car[i].type;
+            html += "<br>The car " + b + " type is " + car[i].type + " model is " +car[i].model + " and its color is " + car[i].color;
+            // html += `<br>The car ${b} type is ${car[i].type}, model is ${car[i].model}, and its color is ${car[i].color}.`;
         }
 
         document.getElementById("demo").innerHTML = html;
