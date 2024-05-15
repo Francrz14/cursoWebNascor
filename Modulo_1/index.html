@@ -8,5 +8,23 @@
 <body>
     <h1>Módulo 1</h1>
     <p>Empezaré el 3 de Junio</p>
+    <p id="demo"></p>
+
+    <script>
+        // Create an object:
+        const car = [
+            { type: "Fiat", model: "500", color: "white" },
+            { type: "Honda", model: "CR-Z", color: "blue" }
+        ];
+
+        // Display some data from the object:
+        let html = "";
+        for (i = 0; i < car.length; i++) {
+            let b = i + 1;
+            html += "<br>The car " + b + " type is " + car[i].type;
+        }
+
+        document.getElementById("demo").innerHTML = html;
+    </script>
 </body>
 </html>
